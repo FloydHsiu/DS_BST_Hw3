@@ -1,0 +1,48 @@
+OS : Ubuntu14.04LTS
+Compiler : gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04)
+
+Program process:
+
+1.The program start and input several number
+
+	Please enter several number seperated by space and press enter to end it up.
+	3 7 4 9
+
+2.Then the menu come out, just input you want to do.
+
+	======================================================================
+	Menu:
+		(1)Insert a new number.
+		(2)Delete a number.
+		(3)Computerize the total of elements in subtree(inclusive).
+		(4)Exit
+	======================================================================
+	What do you want to do :
+
+3.If you input 1
+
+	What do you want to do :1
+	What number you want to insert: 1
+	Complete.
+	3 | 1 7 | 4 9 |
+
+4.If you input 2
+
+	What do you want to do :2
+	What number you want to delete: 3
+	Complete.
+	1 | 7 | 4 9 |
+
+5.If you input 3
+
+	What do you want to do :3
+	What number you want to computerize it subtree: 7
+	20
+	1 | 7 | 4 9 |
+
+6.If you input 4
+
+	What do you want to do :4
+	1 | 7 | 4 9 |
+	Exit
+
