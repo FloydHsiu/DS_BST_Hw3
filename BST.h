@@ -17,8 +17,10 @@ typedef struct data_invoke data_invoke;
 class BST{
 public:
 	BST();
-	bool insert(int data);
-	bool Delete(int data);
+	bool Push(int data);
+	bool Pop();
+	bool IsEmpty();
+	leaf* Top(); 
 	void printBST();
 	void printInLevel();
 	void computerize(int data);

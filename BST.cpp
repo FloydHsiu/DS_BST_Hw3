@@ -6,7 +6,24 @@ BST::BST(){
 	root = NULL;
 }
 
-bool BST::insert(int data){
+bool BST::IsEmpty(){
+	if(root == NULL){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+leaf* BST::Top(){
+	leaf* temp = root;
+	while(temp->right_subtree != NULL){
+		temp = temp->right_subtree;
+	}
+	return temp;
+}
+
+bool BST::Push(int data){
 	leaf *node = root;
 	//不新增已經存在的數字
 	if(IsExistData(node, data)){
@@ -53,10 +70,10 @@ bool BST::IsExistData(leaf *node,int data){
 	}
 }
 
-bool BST::Delete(int data){
-	if(IsExistData(root, data)){
+bool BST::Pop(){
+	if(root != NULL){
 		//數字存在才可以刪除
-		root = deleteRecursion(root, data);
+		root = deleteRecursion(root, this->Top()->data);
 		return true;
 	}
 	else{
@@ -175,28 +192,33 @@ void BST::TreeDegree(leaf *node, int *max, int degree){
 }
 
 void BST::printInLevel(){
-	int Degree = this->TreeDegree();
-	int size = std::pow(2, Degree) - 1;
-	data_invoke *array = new data_invoke[size];
-	for(int i=0; i<size ;i++){
-		array[i].invoke = false;
+	if(this->IsEmpty()){
+		std::cout << "Tree is empty!\n";
 	}
-	printInLevel(array, root, 0);
-	int k = 0;
-	for(int i=0; i<Degree; i++){
-		for(int j=0; j<std::pow(2,i); j++){
-			if(!array[k].invoke){
-				
-			}
-			else{
-				std::cout << array[k].data << " ";
-			}
-			k ++;
+	else{
+		int Degree = this->TreeDegree();
+		int size = std::pow(2, Degree) - 1;
+		data_invoke *array = new data_invoke[size];
+		for(int i=0; i<size ;i++){
+			array[i].invoke = false;
 		}
-		std::cout << "| ";
+		printInLevel(array, root, 0);
+		int k = 0;
+		for(int i=0; i<Degree; i++){
+			for(int j=0; j<std::pow(2,i); j++){
+				if(!array[k].invoke){
+					
+				}
+				else{
+					std::cout << array[k].data << " ";
+				}
+				k ++;
+			}
+			std::cout << "| ";
+		}
+		std::cout << std::endl;
+		delete[] array;
 	}
-	std::cout << std::endl;
-	delete[] array;
 }
 void BST::printInLevel(data_invoke *a, leaf *node, int n){
 	if(node->left_subtree != NULL){

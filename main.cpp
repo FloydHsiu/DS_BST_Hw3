@@ -13,7 +13,7 @@ int main(){
 	std::stringstream ss(input);
 	while( ss ){
 		ss >> temp;
-		mpq.insert(temp);
+		mpq.Push(temp);
 	}
 	do{
 		std::cout << "======================================================================\n";
@@ -29,7 +29,7 @@ int main(){
 			case 1:
 				std::cout << "What number you want to insert: ";
 				std::cin >> temp;
-				erro = mpq.insert(temp);
+				erro = mpq.Push(temp);
 				if(erro){
 					std::cout << "Complete.\n";
 					mpq.printInLevel();
@@ -40,15 +40,14 @@ int main(){
 				}
 				break;
 			case 2:
-				std::cout << "What number you want to delete: ";
-				std::cin >> temp;
-				erro = mpq.Delete(temp);
+				std::cout << "Delete the Max priority\n";
+				erro = mpq.Pop();
 				if(erro){
 					std::cout << "Complete.\n";
 					mpq.printInLevel();
 				}
 				else{
-					std::cout << "Error : \"Number is not exist\"\n";
+					std::cout << "Error : \"Tree is Empty!\n";
 					mpq.printInLevel();
 				}
 				break;
